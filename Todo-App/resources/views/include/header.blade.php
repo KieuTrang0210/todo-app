@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg fs-5">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img src="{{ asset('images/logo.png') }}" class="logo" alt="Logo">
@@ -7,14 +7,33 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="d-flex gap-2 ms-auto">
-                <a href="{{ route ('login.index') }}">
-                    <button class="btn btn-outline-success" type="submit">Login</button>
-                </a>
-                <a href="{{ route ('registration.index') }}">
-                    <button class="btn btn-outline-success" type="submit">Register</button>
-                </a>  
-            </div>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    @auth
+                        <a class="nav-link active" aria-current="page" href="{{ route ('todos.index') }}">Home</a>
+                    @else 
+                        <a class="nav-link active" aria-current="page" href="{{ route ('home') }}">Home</a>
+                    @endauth
+                </li>
+                @auth
+                <li class="nav-item">
+                    <a class="nav-link" id="logoutButton" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
+                </li>
+                @else
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route ('login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route ('registration') }}">Registration</a>
+                </li>
+                @endauth
+            </ul>
+
+            <span class="navbar-text">
+                @auth
+                    {{auth()->user()->name}}
+                @endauth
+            </span>
         </div>
     </div>
 </nav>

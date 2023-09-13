@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +17,16 @@ use App\Http\Controllers\RegistrationController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
-Route::get('login/index', [LoginController::class, 'index'])->name('login.index');
+Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::post('/login', [UserController::class, 'loginPost'])->name('login.post');
 
-Route::get('registration/index', [RegistrationController::class, 'index'])->name('registration.index');
+Route::get('/registration', [UserController::class, 'registration'])->name('registration');
+Route::post('/registration', [UserController::class, 'registrationPost'])->name('registration.post');
+
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/todos/index', [TodoController::class, 'index'])->name('todos.index');
+Route::get('/todos/create', [TodoController::class, 'create'])->name('todos.create');
+Route::post('/todos/store', [TodoController::class, 'store'])->name('todos.store');

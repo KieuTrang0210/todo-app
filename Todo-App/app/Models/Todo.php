@@ -14,7 +14,9 @@ class Todo extends Model
         'title',
         'description',
         'state',
-        'user_id'
+        'user_id',
+        'due_date',
+        'due_time',
     ];
 
     public function user()

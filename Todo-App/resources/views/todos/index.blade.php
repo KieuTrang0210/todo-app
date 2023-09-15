@@ -54,7 +54,6 @@
                                                     @endif
                                                 </td>
                                                 <td class="d-flex justify-content-center gap-2">
-                                                    <a href="#" class="btn btn-info"> <i class="bi bi-eye-fill"></i> </a>
                                                     <a href="{{ route('todos.edit', ['id' => $todo->id]) }}" class="btn btn-warning"> <i class="bi bi-pencil-fill"></i> </a>
                                                     <form action="{{ route('todos.delete', ['id' => $todo->id]) }}" method="post">
                                                         @csrf

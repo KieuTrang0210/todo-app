@@ -31,7 +31,7 @@
 
             <span class="navbar-text">
                 @auth
-                    {{auth()->user()->name}}
+                    <i class="bi bi-person-circle"></i> {{auth()->user()->name}}
                 @endauth
             </span>
         </div>
